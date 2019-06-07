@@ -28,14 +28,17 @@ def add_task():
 @app.route('/insert_task', methods=['POST',])
 def insert_task():
     tasks = mongo.db.tasks
-    tasks.insert_one(request.form.to_dict()) # in real case you would add some validation
+    tasks.insert_one(request.form.to_dict()) # in a real case you would add some validation
     return redirect(url_for('get_tasks'))
 
     
 @app.route('/edit_task/<task_id>')
 def edit_task(task_id):
+    print('task_id', task_id, ObjectId(task_id))
     the_task = mongo.db.task.find_one({'_id': ObjectId(task_id)})
     all_categories = mongo.db.categories.find()
+    print("the_task", the_task)
+    print("all_categories", all_categories)
     return render_template('edittask.html',
                            task=the_task,
                            categories=all_categories,)
