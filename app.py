@@ -5,12 +5,11 @@ from bson.objectid import ObjectId  # to convert the ID to a format readable by 
 
 
 app = Flask(__name__)
-
-
 app.config["MONGO_DBNAME"] = 'task_manager'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 
 mongo = PyMongo(app)
+
 
 @app.route('/')
 @app.route('/get_tasks')
@@ -34,11 +33,8 @@ def insert_task():
     
 @app.route('/edit_task/<task_id>')
 def edit_task(task_id):
-    print('task_id', task_id, ObjectId(task_id))
-    the_task = mongo.db.task.find_one({'_id': ObjectId(task_id)})
+    the_task = mongo.db.tasks.find_one({'_id': ObjectId(task_id)})
     all_categories = mongo.db.categories.find()
-    print("the_task", the_task)
-    print("all_categories", all_categories)
     return render_template('edittask.html',
                            task=the_task,
                            categories=all_categories,)
