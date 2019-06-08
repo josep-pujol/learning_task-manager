@@ -55,12 +55,22 @@
             </div>
         </div>
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Insert Task
+            <button class="btn waves-effect waves-light" type="submit" name="action">Edit Task
                 <i class="material-icons right">playlist_add</i>
             </button>
         </div>
     </form>
 </div>
 
+<!--He says there is a bug, and due to that the link below is not binding from base.html-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="">
+    // the following is to inject due date into the Datepicker form field
+    $(document).ready(function(){
+        // need to parse date to a format date picker understands
+        due_date = Date.parse('{{task.due_date}}');  // be carefudl due_date variable and due_date id below, are different things
+        $('#due_date').pickadate('picker').set('select', due_date, {format: 'dd/mm/yyyy'}).trigger('change')
+    });
+</script>
 
 {% endblock %}
