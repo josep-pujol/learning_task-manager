@@ -1,4 +1,4 @@
-# Flask Tasks Manager Mini-Project
+# Tasks Manager Mini-Project
 
 A simple app to manage tasks written with Flask and MongoDB
 
