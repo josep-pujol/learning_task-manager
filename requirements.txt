@@ -4,7 +4,7 @@ Flask-PyMongo==2.3.0
 bson==0.5.8
 Jinja2==2.10.1
 MarkupSafe==1.1.1
-Werkzeug==0.15.4
+Werkzeug==0.15.5
 dnspython==1.16.0
 itsdangerous==1.1.0
 python-dateutil==2.8.0
